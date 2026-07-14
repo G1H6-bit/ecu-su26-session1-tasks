@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // University Student Portal
+
+// Store Information
+let studentName = prompt("Enter Student Name:");
+let attendance = Number(prompt("Enter Attendance Percentage:"));
+let midterm = Number(prompt("Enter Midterm Score (out of 30):"));
+let finalExam = Number(prompt("Enter Final Exam Score (out of 50):"));
+let assignment = Number(prompt("Enter Assignment Score (out of 20):"));
+let tuitionStatus = prompt("Is Tuition Paid? (yes/no)").toLowerCase();
+
+// Check Tuition Payment
+if (tuitionStatus !== "yes") {
+    alert(" Your tuition fees are unpaid. You cannot view your results.");
+} else {
+
+    // Check Attendance
+    if (attendance < 75) {
+        alert(
+            "Student: " + studentName +
+            "\nAttendance: " + attendance + "%" +
+            "\nStatus: FAIL" +
+            "\nReason: Attendance is below the required 75%."
+        );
+    } else {
+
+        // Calculate Total Score
+        let totalScore = midterm + finalExam + assignment;
+
+        // Determine Letter Grade
+        let grade = "";
+
+        if (totalScore >= 90) {
+            grade = "A";
+        } else if (totalScore >= 80) {
+            grade = "B";
+        } else if (totalScore >= 70) {
+            grade = "C";
+        } else if (totalScore >= 60) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+
+        // Academic Status
+        let status;
+
+        if (totalScore >= 60) {
+            status = "PASS";
+        } else {
+            status = "FAIL";
+        }
+
+        // Scholarship Message
+        let scholarship = "";
+
+        if (totalScore >= 90 && attendance >= 90) {
+            scholarship = "\n Congratulations! You are eligible for a scholarship.";
+        }
+
+        // Display Result
+        alert(
+            " STUDENT RESULT \n" +
+            "Student: " + studentName + "\n" +
+            "Attendance: " + attendance + "%\n" +
+            "Midterm: " + midterm + "\n" +
+            "Final Exam: " + finalExam + "\n" +
+            "Assignment: " + assignment + "\n\n" +
+            "Total Score: " + totalScore + "/100\n" +
+            "Letter Grade: " + grade + "\n" +
+            "Academic Status: " + status +
+            scholarship
+        );
+    }
+}
+    </script>
+</body>
+</html>
+
+
+
+
+
+

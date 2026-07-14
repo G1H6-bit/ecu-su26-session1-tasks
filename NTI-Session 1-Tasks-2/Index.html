@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // E-Commerce Checkout System
+
+// Store Information
+let customerName = prompt("Enter Customer Name:");
+let productCategory = prompt("Enter Product Category (Electronics, Clothing, Food):").toLowerCase();
+let productPrice = Number(prompt("Enter Product Price:"));
+let quantity = Number(prompt("Enter Quantity:"));
+let couponCode = prompt("Enter Coupon Code (SAVE10 or NONE):").toUpperCase();
+let paymentMethod = prompt("Enter Payment Method (Cash, Card, Wallet):").toLowerCase();
+
+// Calculate Subtotal
+let subtotal = productPrice * quantity;
+
+// Category Discount
+let categoryDiscount = 0;
+
+switch (productCategory) {
+    case "electronics":
+        categoryDiscount = subtotal * 0.10; // 10%
+        break;
+    case "clothing":
+        categoryDiscount = subtotal * 0.20; // 20%
+        break;
+    case "food":
+        categoryDiscount = subtotal * 0.05; // 5%
+        break;
+    default:
+        categoryDiscount = 0;
+}
+
+// Coupon Discount
+let couponDiscount = 0;
+
+if (couponCode === "SAVE10") {
+    couponDiscount = subtotal * 0.10; // 10%
+}
+
+// Payment Method Discount
+let paymentDiscount = 0;
+
+if (paymentMethod === "wallet") {
+    paymentDiscount = subtotal * 0.05; // 5%
+}
+
+// Price After Discounts
+let finalPrice = subtotal - categoryDiscount - couponDiscount - paymentDiscount;
+
+// Bonus
+if (finalPrice < 0) {
+    finalPrice = 0;
+}
+
+// VAT (14%)
+let vat = finalPrice * 0.14;
+
+// Total
+let total = finalPrice + vat;
+
+// Display Invoice
+alert(
+    "========== INVOICE ==========\n" +
+    "Customer: " + customerName + "\n\n" +
+    "Category: " + productCategory + "\n" +
+    "Price: $" + productPrice.toFixed(2) + "\n" +
+    "Quantity: " + quantity + "\n" +
+    "Subtotal: $" + subtotal.toFixed(2) + "\n" +
+    "Category Discount: -$" + categoryDiscount.toFixed(2) + "\n" +
+    "Coupon Discount: -$" + couponDiscount.toFixed(2) + "\n" +
+    "Payment Discount: -$" + paymentDiscount.toFixed(2) + "\n" +
+    "Price After Discounts: $" + finalPrice.toFixed(2) + "\n" +
+    "VAT (14%): $" + vat.toFixed(2) + "\n" +
+    "-----------------------------\n" +
+    "Total Amount: $" + total.toFixed(2) + "\n" +
+    "============================="
+);
+    </script>
+</body>
+</html>

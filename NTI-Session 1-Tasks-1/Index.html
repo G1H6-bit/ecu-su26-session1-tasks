@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let Pin = number("1234");
+    let Balance = 5000;
+    let enterPin = prompt("Enter The Pin");
+    if(Pin ==enterPin){
+        alert("Wrong Pin")
+    }else{
+ let operation = prompt(
+        "Select an Operation:\n" +
+        "1. Withdraw\n" +
+        "2. Deposit\n" +
+        "3. Check Balance\n" +
+        "4. Change PIN"
+    );
+    }
+    switch(operation){
+        //Withdraw
+        case "1":
+            let withdrawAmount= Number(Propmt("enter The Amount To Withdraw"));
+            if(withdrawAmount< 0){
+                alert("Invalid Amount ");
+            }
+            else if(withdrawAmount>Balance){
+                alert("You Do Not Have The Enouph Money");
+            }
+            else{
+                Balance-=withdrawAmount;
+                alert("The Withdraw Is Succesfull.\n"+ "withdraw $"+withdrawAmount+"\nRemaining Balance : "+Balance);
+
+            }
+            break;
+
+            //Deposite
+            case "2":let DepositeAmount = Number(Prompt("Enter Amount To Deposite:"));
+            if(DepositeAmount<= 0){
+                alert("Deposite Is Wrong ")
+            }else {
+                Balance+=DepositeAmount;
+                alert("Deposite Succ"); }
+             break;
+             // Check Balance
+             case "3":
+            alert(" Current Balance: $" + balance);
+            break;
+             // Change PIN
+        case "4":
+            let newPIN = prompt("Enter a new 4-digit PIN:");
+
+            if (/^\d{4}$/.test(newPIN)) {
+                userPIN = newPIN;
+                alert(" PIN changed successfully.");
+            } else {
+                alert(" PIN must contain exactly 4 digits.");
+            }
+            break;
+
+        default:
+            alert(" Invalid operation selected.");
+            }
+</script>
+</html>
